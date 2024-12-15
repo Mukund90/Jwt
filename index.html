@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding-Fetch-Api</title>
+</head>
+<body>
+    <h1>understanding fetch api</h1>
+   <div id ="name"></div>
+    <button onclick={getanimal_data()}>GetanimalData</button>
+    <script>
+        async function getanimal_data()
+        {
+          const response = await fetch('https://fakerapi.it/api/v1/persons');
+          if(response.ok)
+          {
+            const data = await response.json();
+            console.log(data)
+            const value = document.getElementById('name');
+            value.innerHTML=" ";
+
+            data.data.forEach(element => {
+              const newlist = document.createElement('li')
+              newlist.textContent= `Name: ${element.firstname}`
+              value.append(newlist);
+            });
+
+          }
+          
+        }
+    </script>
+</body>
+</html>
