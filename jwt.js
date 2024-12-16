@@ -5,8 +5,7 @@ const { z } = require('zod');
 const mongoose = require('mongoose');
 app.use(express.json());
 
-mongoose.connect("mongodb+srv://mukundjha:Mukundjha1@mukund.qmjqwkk.mongodb.net/your-database-name?retryWrites=true&w=majority")
-  .then(() => console.log('Database Connected!'))
+mongoose.connect(.dotenv))
   .catch(err => console.error('Error connecting to MongoDB:', err));
 
 const UserSchema = new mongoose.Schema({
@@ -16,7 +15,7 @@ const UserSchema = new mongoose.Schema({
 });
 const User = mongoose.model('user_app', UserSchema);
 
-const Secret_key = 'Mukund@20087';
+const Secret_key = 'Mukund';
 const schema = z.object({
   name: z.string(),
   email: z.string().email({ message: 'Invalid email address!' }),
